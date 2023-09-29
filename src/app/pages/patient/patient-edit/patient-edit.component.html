@@ -1,0 +1,55 @@
+<form [formGroup]="form" (submit)="operate()" class="example-container">
+
+    <div [hidden]="true">
+        <mat-form-field>
+            <input matInput placeholder="ID" required formControlName="idPatient">
+        </mat-form-field>
+    </div>
+
+    <mat-form-field>
+        <input matInput placeholder="Firstname" required formControlName="firstName">
+        <small *ngIf="f['firstName'].errors?.['required'] && f['firstName'].touched" class="invalid">Is required</small>
+        <small *ngIf="f['firstName'].errors?.['minlength'] && f['firstName'].touched" class="invalid">Minlength is 3</small>
+    </mat-form-field>
+
+    <mat-form-field>
+        <input matInput placeholder="Lastname" required formControlName="lastName">
+        <small *ngIf="f['lastName'].errors?.['required'] && f['lastName'].touched" class="invalid">Is required</small>
+        <small *ngIf="f['lastName'].errors?.['minlength'] && f['lastName'].touched" class="invalid">Minlength is 3</small>
+    </mat-form-field>
+
+    <mat-form-field>
+        <input matInput placeholder="DNI" required formControlName="dni">
+        <small *ngIf="f['dni'].errors?.['required'] && f['dni'].touched" class="invalid">Is required</small>
+        <small *ngIf="f['dni'].errors?.['minlength'] && f['dni'].touched" class="invalid">Minlength is 8</small>
+    </mat-form-field>
+
+    <mat-form-field>
+        <input matInput placeholder="Address" required formControlName="address">
+        <small *ngIf="f['address'].errors?.['required'] && f['address'].touched" class="invalid">Is required</small>
+        <small *ngIf="f['address'].errors?.['minlength'] && f['address'].touched" class="invalid">Minlength is 3</small>
+    </mat-form-field>
+
+    <mat-form-field>
+        <input matInput placeholder="Phone" required formControlName="phone">
+        <small *ngIf="f['phone'].errors?.['required'] && f['phone'].touched" class="invalid">Is required</small>
+        <small *ngIf="f['phone'].errors?.['minlength'] && f['phone'].touched" class="invalid">Minlength is 9</small>
+    </mat-form-field>
+
+    <mat-form-field>
+        <input matInput placeholder="Email" required formControlName="email">
+        <small *ngIf="f['email'].errors?.['required'] && f['email'].touched" class="invalid">Is required</small>
+        <small *ngIf="f['email'].errors?.['minlength'] && f['email'].touched" class="invalid">Email Format Invalid</small>
+    </mat-form-field>
+
+    <button mat-raised-button type="submit" color="primary">
+        <mat-icon>done</mat-icon>
+        <span>Done</span>
+    </button>
+
+    <button mat-raised-button type="button" color="accent" routerLink="/pages/patient">
+        <mat-icon>cancel</mat-icon>
+        <span>Cancel</span>
+    </button>
+
+</form>

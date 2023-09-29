@@ -1,0 +1,22 @@
+.example-container {
+  display: flex;
+  flex-direction: column;
+}
+
+.example-container>* {
+  width: 100%;
+}
+
+.invalid {
+  color: red;
+}
+
+.mat-form-field {
+  width: 500px;
+  margin-right: 50px;
+}
+
+.button{
+    width: 125px;
+    margin-right: 25px;
+}

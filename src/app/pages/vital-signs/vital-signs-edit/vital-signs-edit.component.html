@@ -1,0 +1,60 @@
+<form [formGroup]="form" class="example-container" >
+
+  <div [hidden]="true">
+    <mat-form-field>
+      <input matInput placeholder="ID" required formControlName="idVitalSigns">
+    </mat-form-field>
+  </div>
+
+  <div style="display: inline-flex; justify-content: flex-start">
+    <mat-form-field class="mat-form-field">
+      <mat-select placeholder="Select patient"  formControlName="patient" [(value)]="valueSelected">
+        <mat-option *ngFor="let p of patients$ | async" [value]="p.idPatient">
+              {{p.firstName}} {{p.lastName}}
+        </mat-option>
+        </mat-select>
+    </mat-form-field>
+    <button mat-fab color="accent" style="float: right;" (click)="openDialog()" [hidden]="isEdit">
+      <mat-icon>add</mat-icon>
+    </button>
+  </div>
+
+  <mat-form-field>
+    <mat-label>Choose a date:</mat-label>
+    <input matInput [matDatepicker]="picker" [min]="minDate" [(ngModel)]="dateSelected" placeholder="Date" formControlName="date">
+    <mat-datepicker-toggle matIconSuffix [for]="picker"></mat-datepicker-toggle>
+    <mat-datepicker #picker></mat-datepicker>
+  </mat-form-field>
+
+  <mat-form-field>
+    <input matInput placeholder="Pulse" required formControlName="pulse" maxlength="2">
+    <small *ngIf="f['pulse'].errors?.['required'] && f['pulse'].touched" class="invalid">Is required</small>
+    <small *ngIf="f['pulse'].errors?.['minlength'] && f['pulse'].touched" class="invalid">Minlength is 1</small>
+  </mat-form-field>
+
+  <mat-form-field>
+    <input matInput placeholder="RespiratoryRate" required formControlName="respiratoryRate" maxlength="2">
+    <small *ngIf="f['respiratoryRate'].errors?.['required'] && f['respiratoryRate'].touched" class="invalid">Is required</small>
+    <small *ngIf="f['respiratoryRate'].errors?.['minlength'] && f['respiratoryRate'].touched" class="invalid">Minlength is 1</small>
+  </mat-form-field>
+
+  <mat-form-field>
+    <input matInput placeholder="Temperature" required formControlName="temperature" maxlength="2">
+    <small *ngIf="f['temperature'].errors?.['required'] && f['temperature'].touched" class="invalid">Is required</small>
+    <small *ngIf="f['temperature'].errors?.['minlength'] && f['temperature'].touched" class="invalid">Minlength is 1</small>
+  </mat-form-field>
+
+  <div style="display: inline-flex; justify-content: flex-end">
+  <button class="button" mat-raised-button type="button" (click)="operate()" color="primary" [disabled]="form.invalid">
+    <mat-icon>done</mat-icon>
+    <span>Done</span>
+  </button>
+
+  <button class="button" mat-raised-button type="button" color="accent" routerLink="/pages/vital-signs">
+    <mat-icon>cancel</mat-icon>
+    <span>Cancel</span>
+  </button>
+  </div>
+
+
+</form>

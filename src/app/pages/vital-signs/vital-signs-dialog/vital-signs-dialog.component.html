@@ -1,0 +1,49 @@
+<mat-dialog-content>
+  <form [formGroup]="formPatient">
+
+  <mat-toolbar>
+    <span>Patient Dialog</span>
+  </mat-toolbar>
+
+  <div class="example-container">
+    <mat-form-field>
+      <input matInput formControlName="firstName" placeholder="FirstName" [(ngModel)]="patient.firstName" maxlength="70">
+      <mat-error *ngIf="formPatient.get('firstName').hasError('required')">The name is required</mat-error>
+    </mat-form-field>
+
+    <mat-form-field>
+      <input matInput formControlName="lastName" placeholder="LastName" [(ngModel)]="patient.lastName" maxlength="70">
+      <mat-error *ngIf="formPatient.get('lastName').hasError('required')">Last name is required</mat-error>
+    </mat-form-field>
+
+    <mat-form-field>
+      <input matInput formControlName="email" placeholder="Email" [(ngModel)]="patient.email" maxlength="55">
+      <mat-error *ngIf="formPatient.get('email').hasError('required')">Email is required</mat-error>
+    </mat-form-field>
+
+    <mat-form-field>
+      <input matInput formControlName="phone" placeholder="Phone" [(ngModel)]="patient.phone" maxlength="9">
+      <mat-error *ngIf="formPatient.get('phone').hasError('required')">Phone is required</mat-error>
+    </mat-form-field>
+
+    <mat-form-field>
+      <input matInput formControlName="dni" placeholder="DNI" [(ngModel)]="patient.dni" maxlength="8">
+      <mat-error *ngIf="formPatient.get('dni').hasError('required')">Dni is required</mat-error>
+    </mat-form-field>
+
+    <mat-form-field>
+          <input matInput formControlName="address" placeholder="Address" [(ngModel)]="patient.address" maxlength="150">
+          <mat-error *ngIf="formPatient.get('address').hasError('required')">Address is required</mat-error>
+    </mat-form-field>
+
+    <div style="display: inline-flex; justify-content: flex-end">
+      <button  mat-raised-button color="primary" (click)="operate()" [disabled]="formPatient.invalid">Done</button>
+      <span style="margin-right: 10px;"></span>
+      <button  mat-raised-button color="accent" (click)="close()">Cancel</button>
+    </div>
+  </div>
+
+
+
+  </form>
+</mat-dialog-content>
